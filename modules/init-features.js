@@ -1283,22 +1283,9 @@ window.initFeatures = function(state, db) {
 
 
 
-    document.getElementById('import-preset-btn')?.addEventListener('click', async () => {
-
-
-
-      try {
-
-        await requirePinActivation();
-
-
-        document.getElementById('import-preset-input').click();
-
-      } catch (error) {
-
-        console.warn("预设导入被取消:", error.message);
-      }
-
+    document.getElementById('import-preset-btn')?.addEventListener('click', () => {
+      // 预设导入不再需要 PIN 激活
+      document.getElementById('import-preset-input').click();
     });
 
     document.getElementById('import-preset-input')?.addEventListener('change', handlePresetImport);

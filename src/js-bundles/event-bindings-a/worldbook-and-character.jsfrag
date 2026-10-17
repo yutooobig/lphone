@@ -140,13 +140,9 @@ window.initEventBindingsA = async function(state, db) {
             console.log("检测到 EPhone 备份文件，执行标准导入...");
             await importWorldBooks(data);
           } else if (data.entries && typeof data.entries === 'object') {
-            console.log("检测到 世界书文件，需要激活码...");
-            try {
-              await requirePinActivation();
-              await importTavernWorldBook(data, file.name);
-            } catch (error) {
-              console.warn("世界书导入被取消:", error.message);
-            }
+            console.log("检测到 世界书文件，直接导入...");
+            // 世界书导入不再需要 PIN 激活
+            await importTavernWorldBook(data, file.name);
           } else {
             throw new Error("文件格式无法识别。请确保您选择的是有效的 EPhone 世界书备份或 Tavern AI 世界书文件。");
           }
