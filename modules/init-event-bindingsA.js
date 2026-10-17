@@ -1630,17 +1630,8 @@ window.initEventBindingsA = async function(state, db) {
 
       } else if (choice === 'import_card') {
 
-        try {
-
-          await requirePinActivation();
-
-
-          document.getElementById('import-card-input').click();
-
-        } catch (error) {
-
-          console.warn("角色卡导入被取消:", error.message);
-        }
+        // 角色卡导入不再需要 PIN 激活，直接打开文件选择器
+        document.getElementById('import-card-input').click();
 
       } else if (choice === 'import_file') {
         // 导入文件（非酒馆）
